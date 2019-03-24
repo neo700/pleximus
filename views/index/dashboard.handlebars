@@ -1,0 +1,61 @@
+{{!-- <script>
+    window.onload = function() {
+  // provs is an object but you can think of it as a lookup table
+  var provs = {
+        'Education': ['Math':['Quadratic equation':['basic']], 'Sanitch'],
+        'Ontario': ['Bracebridge', 'Waterloo']
+        {{#each levels}}
+        {{l1}}:[]
+      },
+      // just grab references to the two drop-downs
+      prov_select = document.querySelector('#one'),
+      town_select = document.querySelector('#two');
+
+  // populate the provinces drop-down
+  setOptions(prov_select, Object.keys(provs));
+  // populate the town drop-down
+  setOptions(town_select, provs[prov_select.value]);
+  
+  // attach a change event listener to the provinces drop-down
+  prov_select.addEventListener('change', function() {
+    // get the towns in the selected province
+    setOptions(town_select, provs[prov_select.value]);
+  });
+    
+  function setOptions(dropDown, options) {
+    // clear out any existing values
+    dropDown.innerHTML = '';
+    // insert the new options into the drop-down
+    options.forEach(function(value) {
+      dropDown.innerHTML += '<option name="' + value + '">' + value + '</option>';
+    });
+  }  
+};
+</script> --}}
+
+<select id="one">
+    <option>{{levels}}</option>
+</select>
+
+<h1>{{#each levels}}</h1>
+
+
+<select id="one">
+    <option>{{l1}}</option>
+</select>
+<select id="two">
+     <option>{{l2}}</option>
+</select>
+<select id="three">
+     <option>{{l3}}</option>
+</select>
+<select id="four">
+     <option>{{l4}}</option>
+</select>
+<select id="five">
+     <option>{{l5}}</option>
+</select>
+
+
+
+{{/each}}

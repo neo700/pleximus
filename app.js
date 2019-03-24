@@ -7,9 +7,12 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 
+require('./models/user');
+require('./models/level');
+
+
 const index = require('./routes/index')
 const keys = require('./config/keys');
-require('./models/user');
 
 const app = express();
 
@@ -27,10 +30,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
-app.engine('handlebars', exphbs)
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser());
 app.use(session({
@@ -42,10 +45,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+
 app.use('/',index);
 
 //Set port for the App
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT, function(){
     console.log('Server Started')
