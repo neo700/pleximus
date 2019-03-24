@@ -46,6 +46,19 @@ router.post('/login', (req,res)=>{
     
 });
 
+router.post('/dashboard', (req,res)=>{
+
+    level.find({})
+      .then(levels => {
+          
+        res.send({ levels });
+      })
+    
+
+    
+    
+     
+ });
 
 router.post('/add', (req,res) => {
     var levels = {
